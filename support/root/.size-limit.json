@@ -515,7 +515,6 @@
     "limit": "20 KB",
     "path": "packages/remirror__extension-react-tables/dist/remirror-extension-react-tables.browser.esm.js",
     "ignore": [
-      "@emotion/css",
       "@remirror/pm",
       "react",
       "react-dom",
