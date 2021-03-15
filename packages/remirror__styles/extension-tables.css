@@ -15,6 +15,10 @@
   vertical-align: top;
   box-sizing: border-box;
   position: relative;
+  border: solid 1px var(--rmr-color-divider);
+}
+.remirror-editor.ProseMirror th {
+  background-color: var(--rmr-color-shadow-1);
 }
 .remirror-editor.ProseMirror .column-resize-handle {
   position: absolute;
@@ -26,7 +30,7 @@
   background-color: var(--rmr-hue-blue-9);
   pointer-events: none;
 }
-.remirror-editor.ProseMirror .resize-cursor {
+.remirror-editor.ProseMirror.resize-cursor {
   cursor: ew-resize;
   cursor: col-resize;
 }

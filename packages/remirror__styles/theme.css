@@ -51,6 +51,7 @@
   --rmr-color-shadow-3: rgba(10, 31, 68, 0.12);
   --rmr-color-backdrop: rgba(0, 0, 0, 0.9);
   --rmr-color-outline: rgba(121, 99, 210, 0.4);
+  --rmr-color-divider: hsla(0, 0%, 80%, 1);
   --rmr-color-selection-background: Highlight;
   --rmr-color-selection-shadow: inherit;
   --rmr-color-selection-text: HighlightText;

@@ -20,7 +20,13 @@ export const EDITOR = css`
       vertical-align: top;
       box-sizing: border-box;
       position: relative;
+      border: solid 1px ${getTheme((t) => t.color.divider)};
     }
+
+    th {
+      background-color: ${getTheme((t) => t.color.shadow1)};
+    }
+
     .column-resize-handle {
       position: absolute;
       right: -2px;
@@ -31,7 +37,8 @@ export const EDITOR = css`
       background-color: ${getTheme((t) => t.hue.blue[9])};
       pointer-events: none;
     }
-    .resize-cursor {
+
+    &.resize-cursor {
       cursor: ew-resize;
       cursor: col-resize;
     }

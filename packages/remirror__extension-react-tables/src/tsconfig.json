@@ -20,40 +20,34 @@
       "path": "../../remirror__core/src"
     },
     {
-      "path": "../../remirror__core-helpers/src"
+      "path": "../../remirror__core-utils/src"
     },
     {
-      "path": "../../remirror__dev/src"
+      "path": "../../remirror__extension-positioner/src"
     },
     {
-      "path": "../../remirror__es-module-shims/src"
+      "path": "../../remirror__extension-tables/src"
     },
     {
-      "path": "../../remirror__react/src"
+      "path": "../../remirror__icons/src"
     },
     {
-      "path": "../../remirror__react-debugger/src"
+      "path": "../../remirror__messages/src"
     },
     {
-      "path": "../../remirror__types/src"
+      "path": "../../remirror__preset-core/src"
     },
     {
-      "path": "../../create-context-state/src"
+      "path": "../../remirror__react-components/src"
     },
     {
-      "path": "../../multishift/src"
+      "path": "../../remirror__react-core/src"
     },
     {
-      "path": "../../prosemirror-paste-rules/src"
+      "path": "../../remirror__react-hooks/src"
     },
     {
-      "path": "../../prosemirror-suggest/src"
-    },
-    {
-      "path": "../../prosemirror-trailing-node/src"
-    },
-    {
-      "path": "../../remirror/src"
+      "path": "../../remirror__theme/src"
     }
   ]
 }

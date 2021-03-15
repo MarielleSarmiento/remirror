@@ -37,6 +37,7 @@ Object {
 --rmr-color-shadow-3: rgba(10,31,68,0.12);
 --rmr-color-backdrop: rgba(0, 0, 0, 0.9);
 --rmr-color-outline: rgba(121, 99, 210, 0.4);
+--rmr-color-divider: hsla(0, 0%, 80%, 1);
 --rmr-color-selection-background: Highlight;
 --rmr-color-selection-shadow: inherit;
 --rmr-color-selection-text: HighlightText;
@@ -224,6 +225,7 @@ Object {
     "--rmr-color-backdrop": "rgba(0, 0, 0, 0.9)",
     "--rmr-color-background": "#ffffff",
     "--rmr-color-border": "rgba(0, 0, 0, 0.25)",
+    "--rmr-color-divider": "hsla(0, 0%, 80%, 1)",
     "--rmr-color-faded": "hsla(0, 0%, 13%, 0.9)",
     "--rmr-color-foreground": "#000000",
     "--rmr-color-hover-background": "hsla(0, 0%, 93%, 1)",

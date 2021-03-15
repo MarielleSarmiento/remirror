@@ -365,6 +365,7 @@ export const defaultRemirrorTheme: Remirror.Theme = {
     shadow3,
     backdrop: transparentize(foreground, 0.1),
     outline: transparentize(primary, 0.6),
+    divider: lighten(foreground, 0.8),
     selection: {
       background: 'Highlight',
       shadow: 'inherit',
@@ -539,6 +540,7 @@ declare global {
       shadow3: Color;
       backdrop: Color;
       outline: Color;
+      divider: Color;
       active: NamedColor;
       hover: NamedColor;
       /**

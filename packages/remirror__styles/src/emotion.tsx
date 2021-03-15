@@ -3636,6 +3636,10 @@ export const extensionTablesStyledCss: ReturnType<typeof css> = css`
     vertical-align: top;
     box-sizing: border-box;
     position: relative;
+    border: solid 1px var(--rmr-color-divider);
+  }
+  .remirror-editor.ProseMirror th {
+    background-color: var(--rmr-color-shadow-1);
   }
   .remirror-editor.ProseMirror .column-resize-handle {
     position: absolute;
@@ -3647,7 +3651,7 @@ export const extensionTablesStyledCss: ReturnType<typeof css> = css`
     background-color: var(--rmr-hue-blue-9);
     pointer-events: none;
   }
-  .remirror-editor.ProseMirror .resize-cursor {
+  .remirror-editor.ProseMirror.resize-cursor {
     cursor: ew-resize;
     cursor: col-resize;
   }
@@ -3816,6 +3820,7 @@ export const themeStyledCss: ReturnType<typeof css> = css`
     --rmr-color-shadow-3: rgba(10, 31, 68, 0.12);
     --rmr-color-backdrop: rgba(0, 0, 0, 0.9);
     --rmr-color-outline: rgba(121, 99, 210, 0.4);
+    --rmr-color-divider: hsla(0, 0%, 80%, 1);
     --rmr-color-selection-background: Highlight;
     --rmr-color-selection-shadow: inherit;
     --rmr-color-selection-text: HighlightText;
