@@ -1,4 +1,3 @@
-import { Schema } from 'node:inspector';
 import {
   ApplySchemaAttributes,
   command,
@@ -12,8 +11,6 @@ import {
   findParentNodeOfType,
   Helper,
   helper,
-  isProsemirrorNode,
-  Mark,
   NodeExtension,
   NodeSpecOverride,
   nonChainable,
