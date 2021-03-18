@@ -1,8 +1,7 @@
 import { CreateExtensionPlugin, EditorState, findParentNodeOfType } from '@remirror/core';
 import { PluginKey } from '@remirror/pm/state';
 import { Decoration, DecorationSet } from '@remirror/pm/view';
-
-import { ClassName } from './const';
+import { ExtensionTablesTheme } from '@remirror/theme';
 
 export function createTableDecorationPlugin(): CreateExtensionPlugin {
   return {
@@ -16,7 +15,7 @@ export function createTableDecorationPlugin(): CreateExtensionPlugin {
         if (tableNodeResult) {
           const decorations = [
             Decoration.node(tableNodeResult.pos, tableNodeResult.end, {
-              class: ClassName.TABLE_SHOW_CONTROLLERS,
+              class: ExtensionTablesTheme.TABLE_SHOW_CONTROLLERS,
             }),
           ];
           return DecorationSet.create(state.doc, decorations);

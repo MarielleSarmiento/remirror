@@ -1,10 +1,10 @@
 import { css, cx } from '@emotion/css';
 import { h } from 'jsx-dom';
 import { EditorView, findParentNodeOfType, FindProsemirrorNodeResult } from '@remirror/core';
+import { ExtensionTablesTheme } from '@remirror/theme';
 
-import { ClassName, ControllerType } from '../const';
+import { ControllerType } from '../const';
 import { createControllerEvents, getCellAxis, getControllerType } from '../utils/controller';
-import { controllerAutoHide } from '../utils/style';
 import { CellAxis } from '../utils/types';
 import TableInsertButtonTrigger from './table-insert-button-trigger';
 import TableInsertMark from './table-insert-mark';
@@ -84,7 +84,11 @@ const TableControllerCell = ({
     'th',
     {
       contentEditable: 'false',
-      className: cx(ClassName.TABLE_CONTROLLER, baseClass, controllerAutoHide),
+      className: cx(
+        ExtensionTablesTheme.TABLE_CONTROLLER,
+        baseClass,
+        ExtensionTablesTheme.CONTROLLERS_TOGGLE,
+      ),
       ...events,
     },
     wrapper,

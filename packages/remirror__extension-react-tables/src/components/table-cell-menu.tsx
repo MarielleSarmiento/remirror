@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PositionerPortal } from '@remirror/react-components';
-import { useEvents, usePositioner } from '@remirror/react-hooks';
+import { useRemirrorContext } from '@remirror/react-core';
+import { useEvent, usePositioner } from '@remirror/react-hooks';
 
 import { menuCellPositioner } from '../block-positioner';
 import { borderWidth } from '../const';
@@ -35,9 +36,34 @@ const DefaultTableCellMenuButton: React.FC<TableCellMenuButtonProps> = ({ setPop
 export type TableCellMenuPopupProps = Record<string, never>;
 
 const DefaultTableCellMenuPopup: React.FC<TableCellMenuPopupProps> = () => {
+  const ctx = useRemirrorContext();
+
   return (
-    <div style={{ position: 'absolute', backgroundColor: 'white', border: '1px solid red' }}>
-      MENU
+    <div
+      style={{
+        position: 'absolute',
+        backgroundColor: 'white',
+        border: '1px solid red',
+        width: '200px',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <button onClick={ctx.commands.addTableRowBefore}>add a row above</button>
+      <button onClick={ctx.commands.addTableRowAfter}>add a row below</button>
+      <button onClick={ctx.commands.addTableColumnBefore}>add a column before</button>
+      <button onClick={ctx.commands.addTableColumnAfter}>add a column after</button>
+      <button onClick={ctx.commands.deleteTableColumn}>remove column</button>
+      <button onClick={ctx.commands.deleteTableRow}>remove row</button>
+      <button onClick={() => ctx.commands.setTableCellBackground('teal')}>
+        change the cell color to teal
+      </button>
+      <button onClick={() => ctx.commands.setTableCellBackground('rgba(255,100,100,0.3)')}>
+        change the cell color to pink
+      </button>
+      <button onClick={() => ctx.commands.setTableCellBackground(null)}>
+        remove the cell color
+      </button>
     </div>
   );
 };
@@ -56,7 +82,7 @@ const TableCellMenu: React.FC<TableCellMenuProps> = ({
   const [popupOpen, setPopupOpen] = useState(false);
 
   // Hide the popup when users click.
-  useEvents('mousedown', () => {
+  useEvent('mousedown', () => {
     popupOpen && setPopupOpen(false);
     return false;
   });

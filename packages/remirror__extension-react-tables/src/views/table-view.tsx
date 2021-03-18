@@ -4,9 +4,9 @@ import { EditorSchema, EditorView, NodeView, range, throttle, Transaction } from
 import { Node as ProsemirrorNode } from '@remirror/pm/model';
 import { TableMap, updateColumnsOnResize } from '@remirror/pm/tables';
 import { Decoration } from '@remirror/pm/view';
+import { ExtensionTablesTheme } from '@remirror/theme';
 
 import TableInsertButton, { shouldHideInsertButton } from '../components/table-insert-button';
-import { ClassName } from '../const';
 import { ReactTableNodeAttrs } from '../table-extensions';
 import { injectControllers } from '../utils/controller';
 import { setNodeAttrs } from '../utils/prosemirror';
@@ -64,7 +64,10 @@ export function buildTableStyle(options?: TableStyleOptions): GetTableStyle {
       height: ${controllerSize}px;
       overflow: visible;
 
-      & > td.${ClassName.TABLE_CONTROLLER}, & > th.${ClassName.TABLE_CONTROLLER} {
+      &
+        > td.${ExtensionTablesTheme.TABLE_CONTROLLER},
+        &
+        > th.${ExtensionTablesTheme.TABLE_CONTROLLER} {
         height: ${controllerSize}px;
         overflow: visible;
 
@@ -81,10 +84,10 @@ export function buildTableStyle(options?: TableStyleOptions): GetTableStyle {
     }
 
     & > tbody > tr > {
-      th.${ClassName.SELECTED_CELL}.${ClassName.TABLE_CONTROLLER} {
+      th.${ExtensionTablesTheme.SELECTED_CELL}.${ExtensionTablesTheme.TABLE_CONTROLLER} {
         background-color: ${selectionControllerBackgroundColor} !important;
       }
-      th.${ClassName.SELECTED_CELL}, td.${ClassName.SELECTED_CELL} {
+      th.${ExtensionTablesTheme.SELECTED_CELL}, td.${ExtensionTablesTheme.SELECTED_CELL} {
         ${previewSelectionClass};
         background-color: ${selectionBackgroundColor};
       }
@@ -100,7 +103,8 @@ export function buildTableStyle(options?: TableStyleOptions): GetTableStyle {
           td:nth-child(${attrs.previewSelectionColumn + 1}) {
             ${previewSelectionClass};
           }
-          th.${ClassName.TABLE_CONTROLLER}:nth-child(${attrs.previewSelectionColumn + 1}) {
+          th.${ExtensionTablesTheme.TABLE_CONTROLLER}:nth-child(${attrs.previewSelectionColumn +
+            1}) {
             ${previewSelectionControllerClass}
           }
         }
@@ -111,7 +115,7 @@ export function buildTableStyle(options?: TableStyleOptions): GetTableStyle {
           td {
             ${previewSelectionClass};
           }
-          th.${ClassName.TABLE_CONTROLLER} {
+          th.${ExtensionTablesTheme.TABLE_CONTROLLER} {
             ${previewSelectionControllerClass}
           }
         }
@@ -122,7 +126,7 @@ export function buildTableStyle(options?: TableStyleOptions): GetTableStyle {
           td {
             ${previewSelectionClass};
           }
-          th.${ClassName.TABLE_CONTROLLER} {
+          th.${ExtensionTablesTheme.TABLE_CONTROLLER} {
             ${previewSelectionControllerClass}
           }
         }
@@ -169,17 +173,13 @@ export class TableView<Schema extends EditorSchema = EditorSchema> implements No
 
     this.map = TableMap.get(this.node);
 
-    this.tbody = h('tbody', { className: ClassName.TBODY });
-    this.colgroup = h(
-      'colgroup',
-      { className: ClassName.COL_GROUP },
-      ...range(this.map.width).map(() => h('col')),
-    );
-    this.table = h('table', { className: ClassName.TABLE }, this.colgroup, this.tbody);
+    this.tbody = h('tbody', { className: ExtensionTablesTheme.TABLE_TBODY });
+    this.colgroup = h('colgroup', ...range(this.map.width).map(() => h('col')));
+    this.table = h('table', { className: ExtensionTablesTheme.TABLE }, this.colgroup, this.tbody);
     this.insertButtonWrapper = h('div');
     this.root = h(
       'div',
-      { className: 'remirror-table-controller-wrapper' },
+      { className: ExtensionTablesTheme.TABLE_CONTROLLER_WRAPPER },
       this.table,
       this.insertButtonWrapper,
     );

@@ -1,11 +1,11 @@
-import { css, cx } from '@emotion/css';
+import { cx } from '@emotion/css';
 import { h } from 'jsx-dom';
 import { EditorView, Transaction } from '@remirror/core';
 import { addFill } from '@remirror/icons/all';
 import { TableRect } from '@remirror/pm/tables';
+import { ExtensionTablesTheme } from '@remirror/theme';
 
 import { addColumn, addRow } from '../react-table-commands';
-import { controllerAutoHide } from '../utils/style';
 
 export interface InsertButtonAttrs {
   // The center axis (in px) of the TableInsertButton relative to the editor
@@ -73,32 +73,13 @@ function AddFillIcon(): SVGSVGElement {
 function InnerTableInsertButton(attrs: InsertButtonAttrs): HTMLElement {
   const size = 18;
 
-  const className = css`
-    position: absolute;
-    width: ${size}px;
-    height: ${size}px;
-    z-index: 1300;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 150ms ease;
-
-    background-color: #dcdcdc;
-    & svg {
-      fill: #ffffff;
-    }
-
-    &:hover {
-      background-color: #136bda;
-      & svg {
-        fill: #ffffff;
-      }
-    }
-  `;
-
   return h(
     'div',
     {
-      className: cx(className, controllerAutoHide),
+      className: cx(
+        ExtensionTablesTheme.TABLE_INSERT_BUTTON,
+        ExtensionTablesTheme.CONTROLLERS_TOGGLE,
+      ),
       style: {
         top: `${attrs.y - size / 2 - 5}px`,
         left: `${attrs.x - size / 2}px`,

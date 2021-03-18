@@ -1,17 +1,9 @@
-import { css } from '@emotion/css';
 import { h } from 'jsx-dom';
+import { ExtensionTablesTheme } from '@remirror/theme';
 
 import { ControllerType } from '../const';
 
-const TableInsertMark = ({
-  controllerType,
-  markRadius = 2,
-  color = 'rgba(145, 145, 145, 0.589)',
-}: {
-  controllerType: ControllerType;
-  markRadius?: number;
-  color?: string;
-}): HTMLElement[] => {
+const TableInsertMark = ({ controllerType }: { controllerType: ControllerType }): HTMLElement[] => {
   const elements: HTMLElement[] = [];
 
   if (
@@ -20,18 +12,7 @@ const TableInsertMark = ({
   ) {
     elements.push(
       h('div', {
-        className: css`
-          position: absolute;
-          bottom: -${markRadius}px;
-          left: -12px;
-
-          width: 0px;
-          height: 0px;
-          border-radius: 50%;
-          border-style: solid;
-          border-color: ${color};
-          border-width: ${markRadius}px;
-        `,
+        className: ExtensionTablesTheme.TABLE_INSERT_MARK_ROW_CORNER,
       }),
     );
   }
@@ -42,18 +23,7 @@ const TableInsertMark = ({
   ) {
     elements.push(
       h('div', {
-        className: css`
-          position: absolute;
-          right: -${markRadius}px;
-          top: -12px;
-
-          width: 0px;
-          height: 0px;
-          border-radius: 50%;
-          border-style: solid;
-          border-color: ${color};
-          border-width: ${markRadius}px;
-        `,
+        className: ExtensionTablesTheme.TABLE_INSERT_MARK_COLUMN_CORNER,
       }),
     );
   }

@@ -57,3 +57,72 @@ export const EDITOR = css`
     }
   }
 ` as 'remirror-editor';
+
+export const TABLE_TBODY = 'remirror-table-tbody';
+export const TABLE = 'remirror-table';
+export const TABLE_SHOW_CONTROLLERS = 'remirror-table--show-controllers';
+
+// Any element with this class will be hidden when the controllers are hidden
+export const CONTROLLERS_TOGGLE = css`
+  visibility: hidden;
+
+  .${TABLE_SHOW_CONTROLLERS} & {
+    visibility: visible !important;
+  }
+` as 'remirror-table-controllers-toggle';
+
+export const TABLE_CONTROLLER = 'remirror-table-controller';
+export const TABLE_CONTROLLER_WRAPPER = 'remirror-table-controller-wrapper';
+
+export const TABLE_INSERT_BUTTON = css`
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  z-index: 1300;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 150ms ease;
+
+  background-color: #dcdcdc;
+  & svg {
+    fill: #ffffff;
+  }
+
+  &:hover {
+    background-color: #136bda;
+    & svg {
+      fill: #ffffff;
+    }
+  }
+`;
+
+const markRadius = 2;
+const markColor = 'rgba(145, 145, 145, 0.589)';
+export const TABLE_INSERT_MARK_ROW_CORNER = css`
+  position: absolute;
+  bottom: -${markRadius}px;
+  left: -12px;
+
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: ${markColor};
+  border-width: ${markRadius}px;
+`;
+export const TABLE_INSERT_MARK_COLUMN_CORNER = css`
+  position: absolute;
+  right: -${markRadius}px;
+  top: -12px;
+
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: ${markColor};
+  border-width: ${markRadius}px;
+`;
+
+// following class names are provided by `prosemirror-tables`
+export const SELECTED_CELL = 'selectedCell';
+export const COLUMN_RESIZE_HANDLE = 'column-resize-handle';

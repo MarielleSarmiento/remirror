@@ -99,7 +99,7 @@ const TriggerArea = ({
     zIndex: 12,
 
     // Style for debug. Use linear-gradient as background so that we can differentiate two neighbor areas.
-    background: 'linear-gradient(to left top, rgba(0, 255, 100, 0.3), rgba(200, 100, 255, 0.3))',
+    background: 'linear-gradient(to left top, rgba(0, 255, 100, 0.2), rgba(200, 100, 255, 0.2))',
   };
 
   if (type === TriggerAreaType.ADD_COLUMN_BEFORE || type === TriggerAreaType.ADD_COLUMN_AFTER) {

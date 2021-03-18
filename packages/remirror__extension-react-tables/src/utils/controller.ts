@@ -42,7 +42,15 @@ export function injectControllers({
   const newRows = Fragment.fromArray(newRowsArray);
   const newTable = oldTable.copy(newRows);
 
-  (newTable.attrs as ReactTableNodeAttrs).isControllersInjected = true;
+  // Warning:
+  // prosemirror-model will build up a single reusable default attribute
+  // object, and use it for all nodes that don't specify specific
+  // attributes for node types where all attrs have a default value. That
+  // means we shouldn't directly update an attribute from a node's attrs.
+  (newTable.attrs as ReactTableNodeAttrs) = {
+    ...(newTable.attrs as ReactTableNodeAttrs),
+    isControllersInjected: true,
+  };
 
   const pos = getPos();
   return tr.replaceRangeWith(pos, pos + oldTable.nodeSize, newTable);

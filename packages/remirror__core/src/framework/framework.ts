@@ -20,7 +20,7 @@ import type {
   Shape,
   Transaction,
 } from '@remirror/core-types';
-import { CoreTheme } from '@remirror/theme';
+import { CoreTheme, ExtensionTablesTheme } from '@remirror/theme';
 
 import type { BuiltinPreset, UpdatableViewProps } from '../builtins';
 import type { AnyExtension, CommandsFromExtensions, GetSchema } from '../extension';
@@ -297,9 +297,13 @@ export abstract class Framework<
     }
 
     const uniqueClasses = uniqueArray(
-      cx(ssr && 'Prosemirror', CoreTheme.EDITOR, managerAttributes?.class, ...classNames).split(
-        ' ',
-      ),
+      cx(
+        ssr && 'Prosemirror',
+        CoreTheme.EDITOR,
+        managerAttributes?.class,
+        ...classNames,
+        ExtensionTablesTheme.EDITOR /* TODO: This is a workaround */,
+      ).split(' '),
     ).join(' ');
 
     const defaultAttributes = {

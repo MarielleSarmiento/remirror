@@ -129,14 +129,17 @@ export const TableDeleteRowColumnInnerButton: React.FC<TableDeleteRowColumnInner
   return (
     <div
       ref={position.ref}
-      onClick={onClick}
+      onMouseDown={(e) => {
+        // onClick doesn't work. I don't know why.
+        onClick(e);
+      }}
       className={css`
         position: absolute;
         top: ${position.y - size / 2}px;
         left: ${position.x - size / 2}px;
         width: ${size}px;
         height: ${size}px;
-        z-index: 1300;
+        z-index: 1500;
         cursor: pointer;
         border-radius: 4px;
         background-color: #cecece;

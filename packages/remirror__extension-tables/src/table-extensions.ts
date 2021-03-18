@@ -1,3 +1,4 @@
+import { Schema } from 'node:inspector';
 import {
   ApplySchemaAttributes,
   command,
@@ -8,13 +9,17 @@ import {
   extension,
   ExtensionPriority,
   ExtensionTag,
+  findParentNodeOfType,
   Helper,
   helper,
+  isProsemirrorNode,
+  Mark,
   NodeExtension,
   NodeSpecOverride,
   nonChainable,
   NonChainableCommandFunction,
   OnSetOptionsProps,
+  ProsemirrorNode,
   ProsemirrorPlugin,
   StateUpdateLifecycleProps,
 } from '@remirror/core';
@@ -25,6 +30,7 @@ import {
   addColumnBefore,
   addRowAfter,
   addRowBefore,
+  CellSelection,
   columnResizing,
   deleteColumn,
   deleteRow,
@@ -278,6 +284,40 @@ export class TableExtension extends NodeExtension<TableOptions> {
       document.execCommand('enableInlineTableEditing', false, 'false');
       tablesEnabled = true;
     }
+  }
+
+  /**
+   * Update the table cell background by passing a color string to remove the
+   * background by passing a `null`.
+   */
+  @command()
+  setTableCellBackground(background: string | null): CommandFunction {
+    return (props) => {
+      const { tr, dispatch } = props;
+      const { selection } = tr;
+
+      let pos = 0;
+      let cell: ProsemirrorNode | null = null;
+
+      if (selection instanceof CellSelection && selection.$anchorCell.pos) {
+        pos = selection.$anchorCell.pos;
+        cell = selection.$anchorCell.node();
+      } else {
+        const found = findParentNodeOfType({ selection, types: 'tableCell' });
+
+        if (found) {
+          pos = found.pos;
+          cell = found.node;
+        }
+      }
+
+      if (cell) {
+        dispatch?.(tr.setNodeMarkup(pos, undefined, { ...cell.attrs, background }));
+        return true;
+      }
+
+      return false;
+    };
   }
 
   /**

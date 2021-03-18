@@ -595,8 +595,8 @@ export const coreStyledCss: ReturnType<typeof css> = css`
     overflow-y: scroll;
 
     /** TODO DELETE ME */
-    max-height: 200px;
-    height: 200px;
+    max-height: 500px;
+    height: 500px;
   }
   /** END TODO */
   .remirror-editor.ProseMirror pre {
@@ -3623,6 +3623,64 @@ export const extensionTablesStyledCss: ReturnType<typeof css> = css`
     bottom: 0;
     background: rgba(200, 200, 255, 0.4);
     pointer-events: none;
+  }
+
+  .remirror-controllers-toggle {
+    visibility: hidden;
+  }
+
+  .remirror-table--show-controllers .remirror-controllers-toggle {
+    visibility: visible !important;
+  }
+
+  .remirror-table-insert-button {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    z-index: 1300;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 150ms ease;
+
+    background-color: #dcdcdc;
+  }
+
+  .remirror-table-insert-button svg {
+    fill: #ffffff;
+  }
+
+  .remirror-table-insert-button:hover {
+    background-color: #136bda;
+  }
+
+  .remirror-table-insert-button:hover svg {
+    fill: #ffffff;
+  }
+
+  .remirror-table-insert-mark-row-corner {
+    position: absolute;
+    bottom: -2px;
+    left: -12px;
+
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgba(145, 145, 145, 0.589);
+    border-width: 2px;
+  }
+
+  .remirror-table-insert-mark-column-corner {
+    position: absolute;
+    right: -2px;
+    top: -12px;
+
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgba(145, 145, 145, 0.589);
+    border-width: 2px;
   }
 `;
 

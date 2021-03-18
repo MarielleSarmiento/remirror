@@ -18,8 +18,8 @@ export const EDITOR = css`
     overflow-y: scroll;
 
     /** TODO DELETE ME */
-    max-height: 200px;
-    height: 200px;
+    max-height: 500px;
+    height: 500px;
     /** END TODO */
 
     pre {

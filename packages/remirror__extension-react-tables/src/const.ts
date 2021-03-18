@@ -4,17 +4,4 @@ export enum ControllerType {
   CORNER_CONTROLLER = 3,
 }
 
-export enum ClassName {
-  TABLE = 'remirror-table',
-  TABLE_SHOW_CONTROLLERS = 'remirror-table--show-controllers',
-  TBODY = 'remirror-table-tbody',
-  COL_GROUP = 'remirror-table-colgroup',
-
-  TABLE_CONTROLLER = 'remirror-table-controller',
-
-  // provided by prosemirror-tables
-  SELECTED_CELL = 'selectedCell',
-  COLUMN_RESIZE_HANDLE = 'column-resize-handle',
-}
-
 export const borderWidth = 1; // We could change it to a paramter instead of a constant if we want to support more border width values.
